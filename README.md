@@ -1,4 +1,4 @@
-# Concur Next Segment
+# Concur Next Segment demo
 
 Simple demo app that returns a Concur user's next upcoming segment in a trip/itinerary
 
@@ -7,6 +7,18 @@ Simple demo app that returns a Concur user's next upcoming segment in a trip/iti
 The app stores this upcoming segment object into the browser's [localStorage](http://www.html5rocks.com/en/features/storage) **(Note: Security was not top of mind for this demo app)**. Another web app can then independently pick up this segment from localStorage and roll out a quick integration demo. For example - show [BestBuy Express stores](https://developer.bestbuy.com/documentation/stores-api) inside the airport that the user will be landing in. 
 
 Check out a **live demo** [here](https://radiant-springs-1767.herokuapp.com/).
+
+## Deploying to Heroku
+
+Click the button below to deploy to your Heroku account.
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
+If the deployment was successful, you should see the following:
+
+![SuccessfromDeployToHerokuButton](https://jfqcza.bn1301.livefilestore.com/y2p0PixTxjETp2VoCU_wV3zgG14z7a6Hpn6RMifgryQTE4c5zA3R4mPgOV5aVEF2oA5pRwZmyCKg05Vz7sKvhziF2ujKLSAd1DNZvfTfTwHeFw1PcMfrYW0HDnkIJ9paQNw7gxHxGg97e7FawQUyO8IFQ/successfuldeploy.PNG?psid=1)
+
+Regardless of whether you deployed to Heroku using the button above or any normal deployment method, you need to configure the project first before running. Otherwise you will get an object error.  See `Configuration` section below.
 
 ## Configuration
 
@@ -17,11 +29,7 @@ Modify [config.js](https://github.com/ismaelc/ConcurNextSegment/blob/master/conf
 
 For the app to return an upcoming segment, **you need to have future trips inside Concur**.  To see how to push trip/itineraries to Concur through the API, refer to this [page](https://github.com/ismaelc/ConcurHackathon#dummy) 
 
-## Deploying to Heroku
-
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-
-## Documentation
+## Node.js on Heroku references
 
 For more information about using Node.js on Heroku, see these Dev Center articles:
 
