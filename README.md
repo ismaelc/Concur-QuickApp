@@ -1,8 +1,8 @@
-# node-js-getting-started
+# Concur Next Segment
 
-A barebones Node.js app using [Express 4](http://expressjs.com/).
+Simple demo app that returns a Concur user's next upcoming segment in a trip/itinerary
 
-This application support the [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article - check it out.
+![ConcurNextSegment](https://jfqcza.bn1301.livefilestore.com/y2pdXmTRjld1fu3GUSp--9OjpEpihErn3F3Xw2mcW3aFqJPQvfWMW6VcPOzmB__ErAjni5EwHjDs-iMh_ZXnPNrUS5MZFn0TmDFt7kdAeQZfiXjIBH_Kh454EvHyGsY4ZGMj8iQ4sQxcUQ8YZWIhs3U3Q/ConcurNextSegmentScreen.PNG?psid=1)
 
 ## Running Locally
 
