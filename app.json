@@ -1,7 +1,7 @@
 {
-  "name": "Node.js Getting Started",
-  "description": "A barebones Node.js app using Express 4",
-  "repository": "https://github.com/heroku/node-js-getting-started",
+  "name": "Concur Next Segment demo",
+  "description": "Returns the next upcoming segment from a Concur user's itinerary",
+  "repository": "https://github.com/ismaelc/ConcurNextSegment",
   "logo": "http://node-js-sample.herokuapp.com/node.svg",
   "keywords": ["node", "express", "static"]
 }

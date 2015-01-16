@@ -4,7 +4,9 @@ Simple demo app that returns a Concur user's next upcoming segment in a trip/iti
 
 ![ConcurNextSegment](https://jfqcza.bn1301.livefilestore.com/y2pdXmTRjld1fu3GUSp--9OjpEpihErn3F3Xw2mcW3aFqJPQvfWMW6VcPOzmB__ErAjni5EwHjDs-iMh_ZXnPNrUS5MZFn0TmDFt7kdAeQZfiXjIBH_Kh454EvHyGsY4ZGMj8iQ4sQxcUQ8YZWIhs3U3Q/ConcurNextSegmentScreen.PNG?psid=1)
 
-The app stores this upcoming segment object into the browser's [localStorage](http://www.html5rocks.com/en/features/storage) *(Note: Security was not top of mind for this demo app)*. Another web app can then independently pick up this segment from localStorage and roll out a quick integration demo. For example - show [BestBuy Express stores](https://developer.bestbuy.com/documentation/stores-api) inside the airport that the user will be landing in. 
+The app stores this upcoming segment object into the browser's [localStorage](http://www.html5rocks.com/en/features/storage) **(Note: Security was not top of mind for this demo app)**. Another web app can then independently pick up this segment from localStorage and roll out a quick integration demo. For example - show [BestBuy Express stores](https://developer.bestbuy.com/documentation/stores-api) inside the airport that the user will be landing in. 
+
+Check out a **live demo** [here](https://radiant-springs-1767.herokuapp.com/).
 
 ## Configuration
 
@@ -13,15 +15,11 @@ Modify [config.js](https://github.com/ismaelc/ConcurNextSegment/blob/master/conf
 - [Concur access token](https://github.com/ismaelc/ConcurHackathon#token)
 - [Google Geocoding API key](https://developers.google.com/maps/documentation/geocoding/)
 
-For the app to return an upcoming segment, *you need to have future trips inside Concur*.  To see how to push trip/itineraries to Concur through the API, refer to this [page](https://github.com/ismaelc/ConcurHackathon#dummy) 
+For the app to return an upcoming segment, **you need to have future trips inside Concur**.  To see how to push trip/itineraries to Concur through the API, refer to this [page](https://github.com/ismaelc/ConcurHackathon#dummy) 
 
 ## Deploying to Heroku
 
-```
-$ heroku create
-$ git push heroku master
-$ heroku open
-```
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 ## Documentation
 
@@ -32,3 +30,9 @@ For more information about using Node.js on Heroku, see these Dev Center article
 - [Node.js on Heroku](https://devcenter.heroku.com/categories/nodejs)
 - [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices)
 - [Using WebSockets on Heroku with Node.js](https://devcenter.heroku.com/articles/node-websockets)
+
+## TODO
+
+- Resolve local date/time
+- Add samples (integration with other APIs, maps, etc)
+- Create demo account with ready-to-use access tokens + api keys
