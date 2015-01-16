@@ -4,18 +4,12 @@ Simple demo app that returns a Concur user's next upcoming segment in a trip/iti
 
 ![ConcurNextSegment](https://jfqcza.bn1301.livefilestore.com/y2pdXmTRjld1fu3GUSp--9OjpEpihErn3F3Xw2mcW3aFqJPQvfWMW6VcPOzmB__ErAjni5EwHjDs-iMh_ZXnPNrUS5MZFn0TmDFt7kdAeQZfiXjIBH_Kh454EvHyGsY4ZGMj8iQ4sQxcUQ8YZWIhs3U3Q/ConcurNextSegmentScreen.PNG?psid=1)
 
-## Running Locally
+## Configuration
 
-Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
+Modify [config.js](https://github.com/ismaelc/ConcurNextSegment/blob/master/config.js) and plug in a Concur access token (native flow) and Google Geocoding API key.  Please refer to the following links to generate these access tokens:
 
-```sh
-$ git clone git@github.com:heroku/node-js-getting-started.git # or clone your own fork
-$ cd node-js-getting-started
-$ npm install
-$ npm start
-```
-
-Your app should now be running on [localhost:5000](http://localhost:5000/).
+- [Concur access token](https://github.com/ismaelc/ConcurHackathon#token)
+- [Google Geocoding API key](https://developers.google.com/maps/documentation/geocoding/)
 
 ## Deploying to Heroku
 
