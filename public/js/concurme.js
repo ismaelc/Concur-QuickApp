@@ -1,29 +1,36 @@
 $(document).ready(function () {
-	$("#btnConcurMe").on("click", function(event) {
-		$("body").addClass("loading");
-
-		$.ajax({
-		  type: "POST",
-		  url: "/nextsegment",
-		  data: {
-			loggedIn: true
-		  },
-		  success: function(data) {
-			$("body").removeClass("loading");
-
-			// Save in browser localStorage
-			var nextSegment = JSON.stringify(data);
-			localStorage.setItem('nextSegment', nextSegment);
-
-			// Prettyprint on the browser
-			var indentedOutput = JSON.stringify(JSON.parse(nextSegment), undefined, 4);
-			output(syntaxHighlight(indentedOutput));
-		  }
-		});
-	});
+	$("#btnGetAllSegments").on("click",  function(event) { getAllSegments(true); });
+	$("#btnUpcomingSegment").on("click", function(event) { getAllSegments(false); });
 });
 
 // Utils
+function getAllSegments(requestAllSegments) {
+
+	$("body").addClass("loading");
+
+	// if 'allSegments' is false, just returns one upcoming segment;
+	// if true, return all segments but only upcoming segment will have coordinates
+	$.ajax({
+	  type: "POST",
+	  url: "/segments",
+	  data: {
+		loggedIn: true,
+		allSegments: requestAllSegments
+	  },
+	  success: function(data) {
+		$("body").removeClass("loading");
+
+		// Save in browser localStorage
+		var concurSegment = JSON.stringify(data);
+		localStorage.setItem('concurSegment', concurSegment);
+
+		// Prettyprint on the browser
+		var indentedOutput = JSON.stringify(JSON.parse(concurSegment), undefined, 4);
+		output(syntaxHighlight(indentedOutput));
+	  }
+	});
+}
+
 function output(inp) {
     document.body.appendChild(document.createElement('pre')).innerHTML = inp;
 }

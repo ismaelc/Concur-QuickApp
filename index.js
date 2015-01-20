@@ -24,8 +24,9 @@ var concurAccessToken = config.concur.accessToken;
 var googleAPIKey      = config.google.apiKey;
 
 // This endpoint gets the upcoming segment from entire Concur trip
-app.post('/nextsegment', function(req, res) {
+app.post('/segments', function(req, res) {
 	var reqBody = req.body;
+	var allSegments = reqBody.allSegments;
 
 	if(reqBody.loggedIn) {
 		async.waterfall([
@@ -93,7 +94,7 @@ app.post('/nextsegment', function(req, res) {
 					var i = 0;
 					while(i < segmentArray.length && d > new Date(segmentArray[i].StartDateLocal)) i++;
 
-					callback(null, segmentArray[i]);
+					callback(null, segmentArray[i], segmentArray);
 				})
 				.fail(function(error) {
 					callback(error, "Error: " + error);
@@ -101,7 +102,7 @@ app.post('/nextsegment', function(req, res) {
 			},
 
 			// 3. Geocode the city of upcoming segment using Google API and add resulting location to segment object
-			function(segment, callback) {
+			function(segment, segmentArray, callback) {
 
 				var host = "maps.googleapis.com";
 				var endpoint = "/maps/api/geocode/json";
@@ -138,7 +139,11 @@ app.post('/nextsegment', function(req, res) {
 						"zipCode" :	zipCode
 					}
 
-					callback(null, segment);
+					var returnObj;
+					if(allSegments == 'true') returnObj = segmentArray;
+					else returnObj = segment;
+
+					callback(null, returnObj);
 				});
 			}
 
