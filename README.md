@@ -1,8 +1,8 @@
-# Concur Next Segment demo
+# Concur QuickApp
 
-Simple demo app that returns a Concur user's next upcoming segment in a trip/itinerary
+Allows for quick Concur prototyping by returning segments of a user's itinerary
 
-![ConcurNextSegment](https://jfqcza.bn1301.livefilestore.com/y2pdXmTRjld1fu3GUSp--9OjpEpihErn3F3Xw2mcW3aFqJPQvfWMW6VcPOzmB__ErAjni5EwHjDs-iMh_ZXnPNrUS5MZFn0TmDFt7kdAeQZfiXjIBH_Kh454EvHyGsY4ZGMj8iQ4sQxcUQ8YZWIhs3U3Q/ConcurNextSegmentScreen.PNG?psid=1)
+![ConcurNextSegment](https://jfqcza.bn1301.livefilestore.com/y2pHWRM9R5Nj5PIYUcPZH0ooAYWFIWx_vbqCmz78DpNy_HOe2LIdBVuytwQVuc3wKaqyqPpzw3GmxiLzRF59h16M7ATIxcx-xkB2M15TZ8fnlDlpHBjvra9QZVvDx0o9U5VUFZI3QbwoJk9Ecks1z86Rw/ConcurMe2.PNG?psid=1)
 
 The app stores this upcoming segment object into the browser's [localStorage](http://www.html5rocks.com/en/features/storage) **(Note: Security was not top of mind for this demo app)**. Another web app can then independently pick up this segment from localStorage and roll out a quick integration demo. For example - show [BestBuy Express stores](https://developer.bestbuy.com/documentation/stores-api) inside the airport that the user will be landing in. 
 

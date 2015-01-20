@@ -1,9 +1,11 @@
 var config = {};
 
+// Register for a Concur access token at http://developer.concur.com/
 config.concur = {};
-config.concur.accessToken = "<Register for a Concur access token at http://developer.concur.com/>";
+config.concur.accessToken = "KZhrpa3X1f5i9kPI5MTSL0kvHt0=";
 
+// Generate Google key as instructed in this page - https://developers.google.com/maps/documentation/geocoding/
 config.google = {};
-config.concur.apiKey = "<Generate Google key as instructed in this page - https://developers.google.com/maps/documentation/geocoding/>";
+config.concur.apiKey = "AIzaSyBUJxsb25_UK9cXIAWdNdTVtjlG4vtU0to";
 
 module.exports = config;

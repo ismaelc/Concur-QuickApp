@@ -1,7 +1,7 @@
 {
-  "name": "concur-next-segment",
+  "name": "concur-quickapp",
   "version": "0.0.1",
-  "description": "Returns the next upcoming segment from a Concur user's itinerary",
+  "description": "Allows for quick Concur prototyping by returning segments of a user's itinerary",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"

@@ -1,7 +1,7 @@
 {
-  "name": "Concur Next Segment demo",
-  "description": "Returns the next upcoming segment from a Concur user's itinerary",
-  "repository": "https://github.com/ismaelc/ConcurNextSegment",
+  "name": "Concur QuickApp",
+  "description": "Allows for quick Concur prototyping by returning segments of a user's itinerary",
+  "repository": "https://github.com/ismaelc/Concur-QuickApp",
   "logo": "http://node-js-sample.herokuapp.com/node.svg",
   "keywords": ["node", "express", "static"]
 }
