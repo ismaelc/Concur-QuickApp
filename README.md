@@ -18,7 +18,7 @@ If the deployment was successful, you should see the following:
 
 ![SuccessfromDeployToHerokuButton](https://jfqcza.bn1301.livefilestore.com/y2p0PixTxjETp2VoCU_wV3zgG14z7a6Hpn6RMifgryQTE4c5zA3R4mPgOV5aVEF2oA5pRwZmyCKg05Vz7sKvhziF2ujKLSAd1DNZvfTfTwHeFw1PcMfrYW0HDnkIJ9paQNw7gxHxGg97e7FawQUyO8IFQ/successfuldeploy.PNG?psid=1)
 
-Regardless of whether you deployed to Heroku using the button above or any normal deployment method, you need to configure the project first before running. Otherwise you will get an object error.  See `Configuration` section below.
+Although this sample app has been pre-populated with the necessary access tokens to get it to work right away after deployment, **there is no guarantee that those access tokens or sample itinerary will work indefintely**.  As such, it is highly recommended that you configure the project first before running. Otherwise you might get an object error (if the access tokens are refreshed for some reason).  See `Configuration` section below.
 
 ## Configuration
 

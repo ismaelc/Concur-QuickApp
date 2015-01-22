@@ -4,7 +4,6 @@ var concur = require('concur-platform');
 var config = require('./config');
 var async = require('async');
 var util = require('util');
-var fs = require('fs');
 var Type = require('type-of-is');
 var querystring = require('querystring');
 var https = require('https');
