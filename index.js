@@ -89,11 +89,12 @@ app.post('/segments', function(req, res) {
 
 					segmentArray.sort(function(a, b){return new Date(a.StartDateLocal) - new Date(b.StartDateLocal)});
 
-					var d = new Date();
-					var i = 0;
-					while(i < segmentArray.length && d > new Date(segmentArray[i].StartDateLocal)) i++;
+					//var d = new Date();
+					//var i = 0;
+					//while(i < segmentArray.length && d > new Date(segmentArray[i].StartDateLocal)) i++;
 
-					callback(null, segmentArray[i], segmentArray);
+					//callback(null, segmentArray[i], segmentArray);
+					callback(null, segmentArray);
 				})
 				.fail(function(error) {
 					callback(error, "Error: " + error);
@@ -101,49 +102,76 @@ app.post('/segments', function(req, res) {
 			},
 
 			// 3. Geocode the city of upcoming segment using Google API and add resulting location to segment object
-			function(segment, segmentArray, callback) {
+			//function(segment, segmentArray, callback) {
+			function(segmentArray, callback) {
 
 				var host = "maps.googleapis.com";
 				var endpoint = "/maps/api/geocode/json";
-				var upcomingCity;
-				var upcomingAddress;
+				var segment;
+				//var upcomingCity;
+				//var upcomingAddress;
 
-				if(segment.SegmentType == "Air") {
+				var d = new Date();
+				var i = 0;
+				while(i < segmentArray.length && d > new Date(segmentArray[i].StartDateLocal)) i++;
 
-					var d = new Date();
+				for(var j = 0; j < segmentArray.length; j++) {
 
-					if(d < (new Date(segment.StartDateLocal))) upcomingCity = segment.StartCityCode;
-					else upcomingCity = segment.EndCityCode;
-
-					upcomingAddress = upcomingCity;
+					// flag whether next segment or not
+					if(i == j) segmentArray[j].IsNext = "true";
+					else segmentArray[j].IsNext = "false";
 
 				}
-				else if (segment.SegmentType == "Hotel") {
-					upcomingCity = segment.StartCityCode;
-					upcomingAddress = segment.Name;
-				}
 
-				doRequest(host, endpoint, 'GET', {
-					"address": upcomingAddress,
-					"key": googleAPIKey
-				  }, function(data) {
+				callback(null, segmentArray);
+			},
 
-					var zipCode = getZipCode(data.results[0].address_components);
+			function(segmentArray, callback) {
 
-					segment.UpcomingAddress =
-					{
-						"city" : upcomingCity,
-						"address" : data.results[0].formatted_address,
-						"coordinates" : data.results[0].geometry.location,
-						"zipCode" :	zipCode
+				async.mapLimit(segmentArray, 3, function(segment, callback){
+					var city;
+					var address;
+
+					if(segment.SegmentType == "Air") {
+						var d = new Date();
+						if(d < (new Date(segment.StartDateLocal))) city = segment.StartCityCode;
+						else city = segment.EndCityCode;
+
+						address = upcomingCity;
+					}
+					else if (segment.SegmentType == "Hotel") {
+						city = segment.StartCityCode;
+						address = segment.Name;
 					}
 
-					var returnObj;
-					if(allSegments == 'true') returnObj = segmentArray;
-					else returnObj = segment;
+					doRequest(host, endpoint, 'GET', {
+						"address": address,
+						"key": googleAPIKey
+					  }, function(data) {
 
-					callback(null, returnObj);
+						var zipCode = getZipCode(data.results[0].address_components);
+
+						segment.Location =
+						{
+							"city" : upcomingCity,
+							"address" : data.results[0].formatted_address,
+							"coordinates" : data.results[0].geometry.location,
+							"zipCode" :	zipCode
+						}
+
+						//var returnObj;
+						//if(allSegments == 'true') returnObj = segmentArray;
+						//else returnObj = segment;
+
+						callback();
+					});
+
+				}, function(err, results){
+				    // results is now an array of stats for each file
+
+				    callback(null, results);
 				});
+
 			}
 
 		],
