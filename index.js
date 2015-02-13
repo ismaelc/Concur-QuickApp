@@ -53,7 +53,7 @@ app.post('/segments', function(req, res) {
 				});
 			},
 
-			// 2. Collect all segments (Hotel + Air) of that itinerary and pick the upcoming one
+			// 2. Collect all segments (Hotel + Air) and sort according to travel date/time
 			function(tripId, callback) {
 				var options = {
 					oauthToken: concurAccessToken,
@@ -89,11 +89,6 @@ app.post('/segments', function(req, res) {
 
 					segmentArray.sort(function(a, b){return new Date(a.StartDateLocal) - new Date(b.StartDateLocal)});
 
-					//var d = new Date();
-					//var i = 0;
-					//while(i < segmentArray.length && d > new Date(segmentArray[i].StartDateLocal)) i++;
-
-					//callback(null, segmentArray[i], segmentArray);
 					callback(null, segmentArray);
 				})
 				.fail(function(error) {
@@ -101,13 +96,8 @@ app.post('/segments', function(req, res) {
 				});
 			},
 
-			// 3. Geocode the city of upcoming segment using Google API and add resulting location to segment object
-			//function(segment, segmentArray, callback) {
+			// 3. Identify upcoming segment and flag it
 			function(segmentArray, callback) {
-
-				//var segment;
-				//var upcomingCity;
-				//var upcomingAddress;
 
 				var d = new Date();
 				var i = 0;
@@ -124,6 +114,7 @@ app.post('/segments', function(req, res) {
 				callback(null, segmentArray);
 			},
 
+			// 4. Get coordinate and addresses for each segment location using Google Geocode API
 			function(segmentArray, callback) {
 
 				var host = "maps.googleapis.com";
@@ -138,7 +129,7 @@ app.post('/segments', function(req, res) {
 						if(d < (new Date(segment.StartDateLocal))) city = segment.StartCityCode;
 						else city = segment.EndCityCode;
 
-						address = city;
+						address = city + " airport";
 					}
 					else if (segment.SegmentType == "Hotel") {
 						city = segment.StartCityCode;
