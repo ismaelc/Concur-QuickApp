@@ -1,6 +1,5 @@
 $(document).ready(function () {
-	$("#btnGetAllSegments").on("click",  function(event) { getAllSegments(true); });
-	$("#btnUpcomingSegment").on("click", function(event) { getAllSegments(false); });
+	$("#btnGetAllUpcomingSegments").on("click",  function(event) { getAllSegments(true); });
 });
 
 // Utils
@@ -8,8 +7,6 @@ function getAllSegments(requestAllSegments) {
 
 	$("body").addClass("loading");
 
-	// if 'allSegments' is false, just returns one upcoming segment;
-	// if true, return all segments but only upcoming segment will have coordinates
 	$.ajax({
 	  type: "POST",
 	  url: "/segments",
