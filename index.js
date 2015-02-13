@@ -105,9 +105,7 @@ app.post('/segments', function(req, res) {
 			//function(segment, segmentArray, callback) {
 			function(segmentArray, callback) {
 
-				var host = "maps.googleapis.com";
-				var endpoint = "/maps/api/geocode/json";
-				var segment;
+				//var segment;
 				//var upcomingCity;
 				//var upcomingAddress;
 
@@ -128,6 +126,9 @@ app.post('/segments', function(req, res) {
 
 			function(segmentArray, callback) {
 
+				var host = "maps.googleapis.com";
+				var endpoint = "/maps/api/geocode/json";
+
 				async.mapLimit(segmentArray, 3, function(segment, callback){
 					var city;
 					var address;
@@ -137,7 +138,7 @@ app.post('/segments', function(req, res) {
 						if(d < (new Date(segment.StartDateLocal))) city = segment.StartCityCode;
 						else city = segment.EndCityCode;
 
-						address = upcomingCity;
+						address = city;
 					}
 					else if (segment.SegmentType == "Hotel") {
 						city = segment.StartCityCode;
@@ -153,7 +154,7 @@ app.post('/segments', function(req, res) {
 
 						segment.Location =
 						{
-							"city" : upcomingCity,
+							"city" : city,
 							"address" : data.results[0].formatted_address,
 							"coordinates" : data.results[0].geometry.location,
 							"zipCode" :	zipCode
@@ -163,7 +164,7 @@ app.post('/segments', function(req, res) {
 						//if(allSegments == 'true') returnObj = segmentArray;
 						//else returnObj = segment;
 
-						callback();
+						callback(null, segment);
 					});
 
 				}, function(err, results){
