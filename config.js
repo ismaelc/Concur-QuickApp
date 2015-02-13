@@ -2,7 +2,7 @@ var config = {};
 
 // Register for a Concur access token at http://developer.concur.com/
 config.concur = {};
-config.concur.accessToken = "KZhrpa3X1f5i9kPI5MTSL0kvHt0=";
+config.concur.accessToken = "wqlxR7kKWpdsW3T5vf27c3TkAN4=";
 
 // Generate Google key as instructed in this page - https://developers.google.com/maps/documentation/geocoding/
 config.google = {};
