@@ -8,12 +8,12 @@ function getAllSegments(requestAllSegments) {
 	$("body").addClass("loading");
 
 	$.ajax({
-	  type: "POST",
+	  type: "GET",
 	  url: "/segments",
-	  data: {
-		loggedIn: true,
-		allSegments: requestAllSegments
-	  },
+	  //data: {
+	  //loggedIn: true,
+	  //allSegments: requestAllSegments
+	  //},
 	  success: function(data) {
 		$("body").removeClass("loading");
 

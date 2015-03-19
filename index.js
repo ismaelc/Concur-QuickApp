@@ -23,11 +23,12 @@ var concurAccessToken = config.concur.accessToken;
 var googleAPIKey      = config.google.apiKey;
 
 // This endpoint gets the upcoming segment from entire Concur trip
-app.post('/segments', function(req, res) {
-	var reqBody = req.body;
-	var allSegments = reqBody.allSegments;
+app.get('/segments', function(req, res) {
+	//var reqBody = req.body;
+	//var allSegments = reqBody.allSegments;
 
-	if(reqBody.loggedIn) {
+	//if(reqBody.loggedIn) {
+	if(true) { // wow
 		async.waterfall([
 			// 1. Get upcoming itinerary from several tripIDs
 			function(callback) {
